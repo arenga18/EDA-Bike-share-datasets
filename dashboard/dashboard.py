@@ -5,8 +5,8 @@ import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 import streamlit as st
 
-df_day = pd.read_csv('data/cleaned_df_day.csv')
-df_hour = pd.read_csv('data/cleaned_df_hour.csv')
+df_day = pd.read_csv('cleaned_df_day.csv')
+df_hour = pd.read_csv('cleaned_df_hour.csv')
 
 df_day.reset_index(inplace = True)
 df_hour.reset_index(inplace = True)
