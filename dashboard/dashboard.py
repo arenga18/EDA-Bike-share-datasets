@@ -5,8 +5,8 @@ import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 import streamlit as st
 
-df_day = pd.read_csv('cleaned_df_day.csv')
-df_hour = pd.read_csv('cleaned_df_hour.csv')
+df_day = pd.read_csv('dashboard/cleaned_df_day.csv')
+df_hour = pd.read_csv('dashboard/cleaned_df_hour.csv')
 
 df_day.reset_index(inplace = True)
 df_hour.reset_index(inplace = True)
@@ -65,7 +65,7 @@ monthly_df_2011 = df_2011.groupby(by='month').agg({
 monthly_df_2012 = monthly_df_2012.reset_index()
 monthly_df_2011 = monthly_df_2011.reset_index()
 
-fig = plt.figure(figsize=(10, 5))
+fig = plt.figure(figsize=(14, 7))
 plt.plot(monthly_df_2012['month'], monthly_df_2012['count'], label="2012", marker=".",color='#e60000', linewidth=2)
 plt.plot(monthly_df_2011['month'], monthly_df_2011['count'], label="2011", marker=".",color= '#1919ff', linewidth=2)
 plt.legend() 
