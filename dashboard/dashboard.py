@@ -5,8 +5,8 @@ import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 import streamlit as st
 
-df_day = pd.read_csv('dashboard/cleaned_df_day.csv')
-df_hour = pd.read_csv('dashboard/cleaned_df_hour.csv')
+df_day = pd.read_csv('cleaned_df_day.csv')
+df_hour = pd.read_csv('cleaned_df_hour.csv')
 
 df_day.reset_index(inplace = True)
 df_hour.reset_index(inplace = True)
@@ -14,19 +14,19 @@ df_hour.reset_index(inplace = True)
 weekday_order = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 month_order = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 season_order = ['Spring','Summer', 'Fall','Winter']
-
 df_day['season'] = pd.Categorical(df_day['season'], categories=season_order, ordered=True)
 df_day['month'] = pd.Categorical(df_day['month'], categories=month_order, ordered=True)
 df_day['weekday'] = pd.Categorical(df_day['weekday'], categories=weekday_order, ordered=True)
 custom_palette = sns.color_palette(['#e60000', '#1919ff'])
 
 st.header('Dashboard Bike Sharing Dataset')
+
 st.subheader('Hari, dan jam tersibuk untuk bike sharing berdasarkan tahun')
 year_tab1, year_tab2 = st.tabs(["Hari", "Jam"])
 with year_tab1:
     with st.container():
         fig = plt.figure(figsize = (10, 5))
-        sns.barplot(x = 'weekday', y = 'count', data = df_hour, hue = 'year',palette=custom_palette, errorbar=None)
+        sns.barplot(x = 'weekday', y = 'count', data = df_day, hue = 'year', palette=custom_palette, errorbar=None)
         plt.title('Jumlah pengguna bike sharing berdasarkan hari dan tahun')
         plt.xlabel('Days')
         plt.ylabel('Count')
